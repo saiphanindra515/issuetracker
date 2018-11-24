@@ -1,0 +1,50 @@
+<div class="container-fluid bg-dark header">
+   <div class="row">
+   <div class="col-4 p-4 text-light">
+      <h6>Issue Search Engine</h6>
+   </div>
+   <div class="col-6"></div>
+   <div class="col-2 pt-4 text-light">
+    <button class="btn btn-primary" [routerLink]="['/team']">Dashboard</button>
+ </div>
+  </div>
+  <div class="row pt-5">
+    <div class="col-4"></div>
+    <div class="col-md-4 col-12">
+      <input type="text"  id="inputWord" name="search" placeholder="Search..">
+    </div>
+    <div class="col-4"></div>
+  </div>
+</div>
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-12">
+      <div class="tablebox" style="overflow-x: auto;">
+        <table style="width:100%">
+          <thead>
+            <tr>
+                <th id="title">Title</th>
+                <th>Reporter</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Search</th>
+                <th><button class="btn btn-success px-3">Create</button></th>
+              </tr>
+              </thead>
+              
+                  <tbody *ngFor="let issue of myissues" id="issueTable">
+                      <tr [routerLink]="['/view',issue.issueId]">
+                        <td>{{issue.issueName}}</td>
+                        <td>{{issue.issueReporter}}</td>
+                        <td>{{issue.status}}</td>
+                        <td>{{ issue.createdOn | date  }}</td>
+              
+                        </tr>
+                       
+          
+             </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

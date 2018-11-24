@@ -1,0 +1,15 @@
+.height{
+    height: 100vh;
+}
+.box{
+    color: white;
+    height:100px;
+    width:350px;
+    
+    margin:15px 0px 10px 20px;
+}
+.details{
+    padding:20px 20px 20px 20px;
+   background-color:white;
+   border-radius:10px;
+}

@@ -1,0 +1,214 @@
+<div class="container-fluid bg-dark text-light">
+    <div class="row pt-3 pl-3">
+        <h6>Issue Description</h6>
+    </div>
+    
+    <div *ngFor="let i of issue" class="col-12">
+           
+            <div class="row">
+              <div class="col-12  mt-3">
+                  <h6>{{i.issueName}}</h6>
+              </div> 
+              <div class="col-12  mt-3">
+                  <h6>Description :</h6>
+                  <p [innerHtml]='issueDescription'></p>
+              </div> 
+              <div class="col-12  mt-3">
+                  <h6>Reported by:  {{i.issueReporter}}</h6>
+              </div>   
+                </div>
+    </div>
+    <div class="row py-2 ml-3">
+      <div class="col-6">
+        <h6>Files :</h6>
+         <div *ngFor="let one of allfiles" class="file py-1">
+           <a (click)="download(one.fileName)" style="cursor: pointer;">{{one.fileName}}</a>
+         </div>
+      </div>
+    </div>
+    
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 py-3 text-center">
+          <h5>Edit issue</h5>
+           
+        </div>
+    </div>
+
+<div class="row my-4">
+        <div class="col-12">
+          <div class="card p-4 form1">
+            <form>
+              <div class="row">
+                <div class="col-25">
+                  <label for="fname">Title</label>
+                </div>
+                <div class="col-75">
+                  <input type="text" id="fname" name="issueName" [(ngModel)]="issueName">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="lname">Reporter Name</label>
+                </div>
+                <div class="col-75">
+                  <input type="text" id="lname" name="issueReporter" [(ngModel)]="issueReporter">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="country">status</label>
+                </div>
+                <div class="col-75">
+                  <input type="text" id="status" name="status" [(ngModel)]="status">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="subject">Description</label>
+                </div>
+                <div class="col-75">
+                  <app-ngx-editor [placeholder]="'Enter text here...'" [spellcheck]="true" name="issueDescription" [(ngModel)]="issueDescription"></app-ngx-editor>
+                </div>
+              </div>
+             
+            
+             
+            
+              <div class="row ">
+                <input type="submit" (click)="edit()" value="Submit">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!--end of editor-->
+      
+    </div>
+    <!--assigning section-->
+    
+    <!--end of assigning section-->
+    <!--assigned section-->
+    <div *ngIf="assigned.length>0" class="container my-3">
+        <div class="row">
+          <div class="col-12 col-md-1">
+           <h6>Assigned people</h6>
+          </div>
+          <div class="col-11">
+            <div class="membersBox">
+              <div class="container-fluid">
+                <div class="row">
+                  <div *ngFor="let i of assigned" class="col-sm-6 col-12 col-md-3 col-lg-2  mb-1">
+               <div class="bx bg-success px-3 py-1 mr-5">
+               <p class="member mb-2">{{i.name}} <i class="fas fa-times cursor pl-1 pt-1" (click)="remove(i.name)" style="float:right"></i></p>
+               </div>
+               </div>
+      
+               </div>
+              </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    <!--end of assigned section-->
+    
+    <!--upload section-->
+    <div class="container">
+      <div class="upload card py-4 px-4">
+      <div class="row">
+        
+          
+            
+              <div class="col-12 col-md-8 col-sm-8">
+                <h6>Upload Section</h6>
+                <div id="fileSelector">
+                   
+                  <form enctype="multipart/form-data">
+                    <input type="file" name="fileUplaod" id="fileUpload"
+                    multiple ng2FileSelect [uploader]="uploader">
+                    </form>
+                </div>
+              </div>
+              </div>
+              <div class="row py-2" *ngFor="let item of uploader.queue">
+                <div class="col-md-4">{{item.file.name}}
+    
+                </div>
+                <div class="col-md-4">
+                    <div class="progress">
+                        <div class="progress-bar bg-info" 
+                        [ngStyle]="{'width':item.progress+'%'}"></div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                  <button type="button" class="btn mx-2" (click)="item.upload()">Upload</button>
+                  <button type="button" class="btn btn-danger" (click)="item.remove()">Cancel</button>
+          
+                </div>
+      </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="text-center">watchers
+          </div>
+          <div *ngFor="let f of watchers" id="hidenames" class="pt-1">
+            <div class="hidenames text-center">
+            <h6>{{f.userName}}</h6>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <!--comment section-->
+     
+      
+    <div class="container-fluid bg-dark comment">
+      <div class="row py-2">
+        <div class="col-12 text-center">
+            comments
+        </div>
+       
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-3">
+
+        </div>
+        <div class="col-12 col-md-6 col-sm-12 col-lg-6">
+          <div #scrollMe [scrollTop]="(scrollToChatTop)?0:scrollMe.scrollHeight" class="commentBox">
+            <div *ngIf="noComments" class="nocomments bg-light">
+              <h5>No Comments</h5>
+            </div>
+            <div *ngFor="let i of messageList" class="messageBox bg-light mb-2 py-1 px-2">
+              <div class="head my-2">
+                <h6>{{i.senderName}}</h6>
+              </div>
+              <div class="info my-2"><p>{{i.message}}</p></div>
+              <div class="info my-2"><p>{{i.time | date}}</p></div>
+              
+            </div>
+
+          </div>
+          <textarea name="message" [(ngModel)]="message" (keydown)="sendmessage($event)" placeholder="Enter comments here...." class="my-2"></textarea>
+         
+        </div> 
+        
+        <div class="col-md-3 col-12 col-lg-3"></div>
+      </div>
+    </div>
+    
+    <div class="my-container">
+        <ng-template #customLoadingTemplate>
+            <div class="custom-class">
+                
+            </div>
+        </ng-template>
+     
+        <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px',fullScreenBackdrop:true }" [template]="customLoadingTemplate"></ngx-loading>
+        
+    </div>

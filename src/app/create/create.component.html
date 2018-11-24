@@ -1,0 +1,184 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 pt-4">
+      <h4>Issue Editor
+      <button  class="btn btn-success my-auto" style="float:right;"[routerLink]="['/team']">Dashboard</button> </h4>
+    </div>
+  </div>
+  <!--editor box-->
+  <div class="row my-4">
+    <div class="col-12">
+      <div class="card p-4 form1">
+        <form #edit="ngForm">
+          <div class="row">
+            <div class="col-25">
+              <label for="fname">Title</label>
+            </div>
+            <div class="col-75">
+              <input type="text" id="fname" name="title" [(ngModel)]="title" placeholder="Your name.." required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-25">
+              <label for="lname">Reporter Name</label>
+            </div>
+            <div class="col-75">
+              <input type="text" id="lname" name="reporterName" [(ngModel)]="reporterName" placeholder="Your last name.." required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-25">
+              <label for="country">status</label>
+            </div>
+            <div class="col-75">
+              <input type="text" id="status" name="status" [(ngModel)]="status" placeholder="status of issue" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-25">
+              <label for="subject">Description</label>
+            </div>
+            <div class="col-75">
+              <app-ngx-editor [placeholder]="'Enter text here...'" [spellcheck]="true" name="htmlContent" [(ngModel)]="htmlContent" required></app-ngx-editor>
+            </div>
+          </div>
+         
+        
+         
+        
+          
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--end of editor-->
+  
+</div>
+<!--assigning section-->
+<div class="container my-3">
+  <div class="row">
+    <div class="col-md-1 col-12">
+     <h6>Developers</h6>
+    </div>
+    <div class="col-11">
+      <div class="membersBox">
+        <div class="container-fluid">
+          <div class="row">
+            <div *ngFor="let i of allDevelopers" class="col-12 col-sm-6 col-md-3 col-lg-2  mb-1">
+         <div class="bx bg-light px-3 py-1 mr-5">
+         <p class="member mb-2">{{i.firstName}} <i class="fas fa-plus cursor pl-1 pt-1" (click)="peopleGotAssigned(i.firstName,i.userId)" style="float:right"></i></p>
+         </div>
+         </div>
+
+         </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>
+<!--end of assigning section-->
+<!--assigned section-->
+<div *ngIf="assigned.length>0" class="container my-3">
+    <div class="row">
+      <div class="col-12 col-md-1">
+       <h6>Assigned people</h6>
+      </div>
+      <div class="col-11">
+        <div class="membersBox">
+          <div class="container-fluid">
+            <div class="row">
+              <div *ngFor="let i of assigned" class="col-sm-6 col-12 col-md-3 col-lg-2  mb-1">
+           <div class="bx px-3 py-1 mr-5">
+           <p class="member mb-2">{{i.name}} <i class="fas fa-times cursor pl-1 pt-1" (click)="remove(i.id)" style="float:right"></i></p>
+           </div>
+           </div>
+  
+           </div>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--end of assigned section-->
+
+<!--upload section-->
+<div class="container">
+  <div class="upload card py-4 px-4">
+  <div class="row">
+    
+      
+        
+          <div class="col-12">
+            <h6>Upload Section</h6>
+            <div id="fileSelector">
+               
+              <form enctype="multipart/form-data">
+                <input type="file" name="fileUplaod" id="fileUpload"
+                multiple ng2FileSelect [uploader]="uploader">
+                </form>
+            </div>
+          </div>
+          </div>
+          <div class="row py-2" *ngFor="let item of uploader.queue">
+            <div class="col-md-4">{{item.file.name}}
+
+            </div>
+            <div class="col-md-4">
+                <div class="progress">
+                    <div class="progress-bar bg-info" 
+                    [ngStyle]="{'width':item.progress+'%'}"></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+              <button type="button" class="btn mx-2" (click)="item.upload()">Upload</button>
+              <button type="button" class="btn btn-danger" (click)="item.remove()">Cancel</button>
+      
+            </div>
+  </div>
+  <div class="row ">
+    <input class="btn btn-success my-4 mx-2" (click)="create()" [disabled]="!edit.valid" value="Submit">
+  </div>
+  </div>
+</div>
+
+<!--comment section-->
+ 
+  
+<div class="container">
+    <div class="upload card">
+  <div class="row my-3">
+    <div class="col-12">
+      <div class="comments">
+        <div *ngFor="let i of messageList" class="messageBox">
+          <div class="chatBox card">
+            <div class="chatHeader">
+             <h6>saiphanindra</h6>
+            </div>
+            <div class="messageBox">
+                <h6 style="font-size:15px"> 
+                </h6>
+            </div>
+          </div>
+           
+                  
+          <!---->
+        </div>
+        
+      </div>
+    </div>
+  </div>
+ 
+  </div>
+</div>
+
+<div class="my-container">
+    <ng-template #customLoadingTemplate>
+        <div class="custom-class">
+            
+        </div>
+    </ng-template>
+ 
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px',fullScreenBackdrop:true }" [template]="customLoadingTemplate"></ngx-loading>
+    
+</div>

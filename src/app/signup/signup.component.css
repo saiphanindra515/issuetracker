@@ -1,0 +1,65 @@
+.backgroundb{
+    background-color: #2A7389;
+    height:100vh;
+    width:100%;
+    
+    
+     
+}
+.mobilebox{
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url("https://images.pexels.com/photos/1068523/pexels-photo-1068523.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+   height:100vh;
+   width:100%;
+   color:lightgrey; 
+}
+.Titlemobile{
+    color:lightgrey;
+    padding-top:30px;
+   
+}
+.box{
+    margin: 6% 10% 2% 10%;
+    background-color:white;
+    height:70vh;
+    width:80%;
+    border-radius: 5px;
+    box-shadow: 5px ;
+    
+}
+.image{
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url("https://images.pexels.com/photos/1068523/pexels-photo-1068523.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+   height:70vh;
+   width:40vw;
+}
+.Title{
+    color:lightgrey;
+    padding-top:180px;
+   
+}
+.line{
+    height:2px;
+    width:50px;
+    background-color: #2A7389;
+}
+button{
+    
+    width:140px;
+    border-radius: 5%;
+    
+}
+@media only screen and (min-width:100px) and (max-width:979px){
+    .Desktop{
+        display:none;
+    }
+   }
+   @media only screen and (min-width:980px) {
+       .mobile{
+           display:none;
+       }
+   }

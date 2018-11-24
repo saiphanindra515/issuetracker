@@ -1,0 +1,121 @@
+<div class="my-container">
+    <ng-template #customLoadingTemplate>
+        <div class="custom-class">
+            <h3>
+                Loading...
+            </h3>
+            <button (click)="showAlert()">
+                Click me!
+            </button>
+        </div>
+    </ng-template>
+ 
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+    //...
+</div>
+
+
+<div class="container-fluid backgroundb Desktop">
+  <div class="row">
+    <!--white box-->
+    <div class="box">
+      <!--image box-->
+      <div class="container-fluid">  
+        <div class="row"> 
+          <div class="col-6 image">
+     <div>
+       <div class="Title text-center">
+         <h4>Share updates with your Team</h4>
+         <h6> Tell your teammates about it. You can also get a view of
+            the status messages of your fellow project members,
+             so it's easy to see what everyone is working on.</h6>
+       </div>
+     </div>
+     </div>
+     <!--image box closed-->
+     <div class="col-6">
+     <!--login-->
+     <div class="toknow px-4">
+       <div class="t1">
+         <h5 class="text-center pt-2">signup</h5>
+         <form  #signupform="ngForm">
+            <div class="form-group">
+                <label for="exampleInputEmail2"><h6>Name</h6></label>
+                <input type="email"  name="Name" [(ngModel)]="Name" #fullName="ngModel" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Enter your Name" required>
+                
+              </div>
+            <div class="form-group">
+              <label for="exampleInputEmail4"><h6>Email address</h6></label>
+              <input type="email"  name="email" [(ngModel)]="email"  class="form-control" id="exampleInputEmail4" aria-describedby="emailHelp" placeholder="Enter email" required>
+              
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail3"><h6>mobile Number</h6></label>
+                <input type="email"  name="mobileNumber" [(ngModel)]="mobileNumber" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" placeholder="Enter mobile number" required>
+                
+              </div>
+            <div class="form-group">
+              <label for="exampleInputPassword2"><h6>Password</h6></label>
+              <input type="password" name="password" [(ngModel)]="password"  class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+            </div>
+           
+            <button type="submit"  [disabled]="!signupform.valid" (click)="signup()"class="btn btn-info mt-1">signup</button>
+            
+          </form>
+        
+         
+        </div>
+     </div>
+     <!--login ended-->
+     </div>
+     </div>
+     </div>
+    </div>
+    <!--white box ended-->
+  </div>
+</div>
+
+<!--for mobile-->
+<div class="container-fluid mobile backgroundb">
+    <div class="row">
+      <div class="col-12">
+         <div class="mobilebox">
+            <div class="Titlemobile text-center">
+                <h4>Share updates with your Team</h4>
+         <h6> Tell your teammates about it. You can also get a view of
+            the status messages of your fellow project members,
+             so it's easy to see what everyone is working on.</h6>
+              </div>
+              <div class="formmob px-2">
+              <h5 class="text-center pt-1">signup</h5>
+              <!--form started-->
+              <form  #signupform="ngForm">
+                <div class="form-group">
+                    <label for="exampleInputEmail8"><h6>Name</h6></label>
+                    <input type="email"  name="Name" [(ngModel)]="Name" #fullName="ngModel" class="form-control" id="exampleInputEmail8" aria-describedby="emailHelp" placeholder="Enter your Name" required>
+                    
+                  </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail9"><h6>Email address</h6></label>
+                  <input type="email"  name="email" [(ngModel)]="email"  class="form-control" id="exampleInputEmail9" aria-describedby="emailHelp" placeholder="Enter email" required>
+                  
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail10"><h6>mobile Number</h6></label>
+                    <input type="email"  name="mobileNumber" [(ngModel)]="mobileNumber" class="form-control" id="exampleInputEmail10" aria-describedby="emailHelp" placeholder="Enter mobile number" required>
+                    
+                  </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1"><h6>Password</h6></label>
+                  <input type="password" name="password" [(ngModel)]="password"  class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                </div>
+               
+                <button type="submit"  [disabled]="!signupform.valid" (click)="signup()"class="btn btn-info mt-1">signup</button>
+                
+              </form>
+              
+           </div>
+         </div>
+      </div>
+    </div>
+  </div>

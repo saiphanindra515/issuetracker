@@ -1,0 +1,223 @@
+<!--Header-->
+<div class="container-fluid header">
+  <div class="row">
+    
+    <div class="col-12">
+     
+         <div class="icons">  
+              
+        <i class="fas fa-phone fa-lg py-3 pl-3 left"></i>
+        <i class="fab fa-facebook-square  fa-lg py-3  pl-3 left"></i>
+        <i class="fab fa-github  fa-lg py-3 pl-3 left"></i>
+        <i class="fab fa-twitter  fa-lg py-3 pl-3 left"></i>
+        <i class="fab fa-instagram  fa-lg py-3 pl-3 left"></i>
+        </div>
+    </div>
+  </div>
+</div>
+<!--end of Header-->
+<!--navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand"><i class="fas fa-bars  show" style="cursor: pointer;color:white;"></i></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-0 ml-lg-auto">
+      <li class="nav-item">
+        <a class="nav-link cursor"></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link cursor" (click)="logout()">Logout</a>
+      </li>
+     
+    </ul>
+   
+  </div>
+</nav>
+<!--wrapper-->
+<div class="wrapper">
+  <div class="icon pb-2">
+      <i class="fas fa-arrow-alt-circle-left fa-lg hider"></i>
+     
+  </div>
+  <div class="image pt-3 pl-5 ml-1 text-light">
+    <img src={{userimage}} class="img-fluid pb-1" width=120px>
+    <h6>{{username}}</h6>
+  </div>
+  <div class="title">
+      <h6>latest Issues</h6>
+  </div>
+  <div *ngFor="let issue of allIssues" class="sideBarInfo">
+    <div class="title">
+     <p> {{issue.issueName}}</p>
+     
+    </div>
+  </div>
+</div>
+<!--end of wrapper-->
+<div class="notification">
+  
+</div>
+<div class="container-fluid main dashboard">
+  <div class="row dashboard">
+    
+    <div class="col-12 align-items-center">
+      
+       <h4 class=" pt-5 text-light text-center">Welcome {{username}}!</h4>
+       
+       <h5 class=" pt-1 text-light text-center">Have a nice day!</h5>
+    </div>
+   
+  </div>
+
+</div>
+
+<!--information-->
+<div class="container py-4">
+<div class="row">
+  <div class="col-12">
+   <p class="heading"> Dashboard</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 img">
+
+  </div>
+  <div class="col-md-6">
+    <div class="info1 bg-success p-3 text-light">
+       <h4>create issues</h4>
+       <h6>create whaterver issues you find in your project and 
+         assign them to the right team members at the right time,
+        the team member get notification about the issue</h6>
+    </div>
+    <div class="info1 bg-success p-3 text-light my-2">
+        <h4>Track issues</h4>
+        <h6>Always stay in the know by tracking bugs and 
+          issues through your team's workflow,issues will trigger notifications, 
+          automatically informing the next reviewer</h6>
+     </div>
+  </div>
+</div>
+</div>
+<!--end of information-->
+<!--Issues-->
+<div class="container-fluid">
+  <div class="row py-3">
+    <div class="col-12">
+      <div class="text-center">
+        <div class="heading">Issues Table</div>
+      </div>
+    </div>
+  </div>
+  <!--table-->
+  
+  
+
+</div>
+<!--end of issues-->
+<div class="tablebox" style="overflow-x: auto;">
+  <table style="width:100%">
+    <thead>
+      <tr>
+          <th id="title">Title</th>
+          <th>Reporter</th>
+          <th>Status</th>
+          <th>Date</th>
+          <th><button class="btn btn-success px-3" [routerLink]="['/search']">Search</button></th>
+          <th><button class="btn btn-success px-3"[routerLink]="['/create']">Create</button></th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let issue of myissues">
+        <tr [routerLink]="['/view',issue.issueId]">
+          <td>{{issue.issueName}}</td>
+          <td>{{issue.issueReporter}}</td>
+          <td>{{issue.status}}</td>
+          <td>{{ issue.createdOn | date  }} <i class="fas fa-trash ml-4 text-danger fa-lg"(click)="delete(issue.issueId)"></i></td>
+        
+          </tr>
+         
+</tbody>
+  </table>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+    <button *ngIf="previous" class="btn btn-success"style="float:left;" (click)="previousFunction(1)">previous</button>
+    <button *ngIf="next" class="btn btn-success" style="float:right;"(click)="nextFunction(1)">next</button>
+    </div>
+  </div>
+</div>
+
+<!--issues-->
+<div class="container">
+    <div class="row py-3">
+        <div class="col-12">
+          <div class="text-center">
+            <div class="heading">Latest Issues</div>
+          </div>
+        </div>
+      </div>
+  <div class="row">
+    <div *ngFor="let issue of allIssues" class="col-md-3 col-12">
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{issue.issueName}}</h5>
+              <p class="card-text">Reported by : {{issue.issueReporter}}</p>
+              <p class="card-text">status : {{issue.status}}</p>
+              <a class="btn btn-primary"(click)="watcher(issue.issuName,issue.issueReporter,issue.issueDescription,issue.status,issue.issueId)">Watch</a>
+            </div>
+          </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+      <button *ngIf="previous2" class="btn btn-success"style="float:left;" (click)="previousFunction(2)">previous</button>
+      <button *ngIf="next2" class="btn btn-success" style="float:right;"(click)="nextFunction(2)">next</button>
+      </div>
+    </div>
+  </div>
+<!--end of issues-->
+
+<!--footer-->
+<div class="container-fluid py-2 mt-5 bg-dark">
+  <div class="row text-light">
+    <div class="col-md-4 py-4 px-1">
+     <h6>Track and record</h6>
+     <p>Track bugs by status, severity, 
+       and user. Get insights on progress 
+       with bug reports.</p>
+      <h6> Automated bug tracking.</h6>
+       <p>   Set business rules to automatically trigger actions for bug events.
+           Select events to send email notifications to assignees,
+            reporters and </p>
+    </div>
+    <div class="col-md-4 py-4 px-4">
+        <h6>Features</h6>
+        <p>Social login</p>
+        <p>issue dashboard</p>
+        <p>issue tables</p>
+        <p>create issue</p>
+        <p>assign to team member</p>
+        <p>Disuss about issue</p>
+       </div>
+  
+  <div class="col-md-4 py-4 px-3">
+       
+        <div class="text-light" style="float: left;">      
+          <i class="fas fa-phone fa-lg py-3 pl-3 left"></i>
+          <i class="fab fa-facebook-square  fa-lg py-3  pl-3 left"></i>
+          <i class="fab fa-github  fa-lg py-3 pl-3 left"></i>
+          <i class="fab fa-twitter  fa-lg py-3 pl-3 left"></i>
+          <i class="fab fa-instagram  fa-lg py-3 pl-3 left"></i>
+  </div>
+     </div>
+     </div>
+</div>
+<!--end of footer-->

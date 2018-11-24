@@ -1,0 +1,114 @@
+
+.wrapper{
+    z-index: 1;
+    position: absolute;
+    height: 100vh ;
+    width:250px ;
+    background-color: #2C3E50 ;
+    overflow-y: scroll;
+}
+.cursor{
+    cursor: pointer;
+}
+tr{
+    cursor: pointer;
+}
+.notification{
+    width:380px;
+    height:400px;
+    z-index:1;
+    background:#dfe6e9;
+    position: absolute;
+    right:100px;
+    overflow-y:scroll; 
+
+}
+.left{
+    float: right;
+}
+right{
+    float: left;
+}
+.card{
+    margin-bottom: 30px;
+    box-shadow: 5px 5px 5px 5px #888888;
+    
+}
+.tablebox{
+    margin:20px;
+    border:1px solid lightgrey;
+    border-radius:10px;
+    box-shadow: 5px 5px 5px 5px #888888;
+    padding:20px;
+}
+.title{
+    padding:3px 10px 5px 20px;
+    color:white;
+}
+.descriptionBox{
+    padding:3px 3px 3px 10px;
+    height:80px;
+    overflow: hidden;
+    color:white;
+}
+table{
+    overflow-x: scroll;
+}
+th,td{
+    padding:8px;
+    
+}
+td{
+    border-bottom: 1px solid lightgrey;
+}
+#title{
+    width:30%;
+}
+.heading{
+    font-size: 30px;
+}
+.info1{
+    border-radius:10px;
+}
+.img{
+    height:60vh;
+    
+    background-image:url('https://images.pexels.com/photos/951236/pexels-photo-951236.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+.main{
+    z-index: 0;
+    height: 92vh ;  
+    background-color:rgb(246, 246, 246); 
+    
+}
+nav{
+    height:8vh !important;
+    background-color:#2C3E50 !important ;
+     box-shadow : 2px;
+}
+.icon{
+    color:lightgrey;
+    float:right;
+    padding: 10px 10px 0px 0px;
+    cursor: pointer;
+    font-size: 16px !important;
+}
+.header{
+    height: 7vh ;
+    
+}
+
+.dashboard{
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url("https://images.pexels.com/photos/1546901/pexels-photo-1546901.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-size:cover;
+    background-repeat: no-repeat;
+    
+    height:30vh;
+    width:100%;
+}
+.icons{
+    color:#2C3E50 !important;
+}
